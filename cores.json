@@ -1,5 +1,5 @@
 [
     {"name":"cpu6502_true_cycle","url":"https://github.com/freecores/cpu6502_true_cycle"},
-    {"name":"cpu6502_true_cycle","url":"https://github.com/freecores/t65","dir":"/rtl/vhdl"},
+    {"name":"t65","url":"https://github.com/freecores/t65","dir":"/rtl/vhdl"},
     {"name":"cpu6809","url":"https://github.com/freecores/6809_6309_compatible_core"}
 ]

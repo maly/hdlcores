@@ -1,6 +1,7 @@
 const confpath = require("./config.js");
 const fs = require("fs");
 var request = require('request')
+const colors = require("colors/safe")
 
 const cores = confpath+"cores.json";
 
@@ -18,6 +19,7 @@ var getCoresFromGithub = function(cb) {
 	    request(options, function (error, response, body) {
             if (error) reject(error)
             else {
+                console.log(colors.green("Cores list updated from master"))
                 resolve(body);
             }
 		    //cb(out)
@@ -38,6 +40,6 @@ var getList = function() {
 }
 
 module.exports = {
-    forceUpdate:getCoresFromGithub,
+    forceUpdate:() => getCoresFromGithub().then((body) => fs.writeFileSync(cores,JSON.stringify(body))),
     getList:getList
 }
