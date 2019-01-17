@@ -1,15 +1,71 @@
 #!/usr/bin/env node
 
-var config = require("./config.js");
+var confpath = require("./config.js");
 //console.log(config)
 var cores = require("./cores.js")
 var cwd = process.cwd();
 const colors = require("colors/safe")
 //cores.forceUpdate();
 //console.log(cores.getList())
+const fs = require("fs");
+const path = require("path");
 
 
 var program = require('commander');
+
+
+function rimraf(dir_path) {
+  if (fs.existsSync(dir_path)) {
+      fs.readdirSync(dir_path).forEach(function(entry) {
+          var entry_path = path.join(dir_path, entry);
+          if (fs.lstatSync(entry_path).isDirectory()) {
+              rimraf(entry_path);
+          } else {
+              fs.unlinkSync(entry_path);
+          }
+      });
+      fs.rmdirSync(dir_path);
+  }
+}
+
+function copyFileSync( source, target ) {
+
+  var targetFile = target;
+
+  //if target is a directory a new file with the same name will be created
+  if ( fs.existsSync( target ) ) {
+      if ( fs.lstatSync( target ).isDirectory() ) {
+          targetFile = path.join( target, path.basename( source ) );
+      }
+  }
+
+  fs.writeFileSync(targetFile, fs.readFileSync(source));
+}
+
+function copyFolderRecursiveSync( source, target ) {
+  var files = [];
+
+  //check if folder needs to be created or integrated
+  var targetFolder = path.join( target, path.basename( source ) );
+  if ( !fs.existsSync( targetFolder ) ) {
+      fs.mkdirSync( targetFolder );
+  }
+
+  //copy
+  //console.log("S",source,fs.lstatSync( source ))
+  if ( fs.lstatSync( source ).isDirectory() ) {
+      files = fs.readdirSync( source );
+      files.forEach( function ( file ) {
+          var curSource = path.join( source, file );
+          if ( fs.lstatSync( curSource ).isDirectory() ) {
+              copyFolderRecursiveSync( curSource, targetFolder );
+          } else {
+              copyFileSync( curSource, targetFolder );
+          }
+      } );
+  }
+}
+
 
 program.version('1.0.0')
   .usage('cores command [options]')
@@ -21,7 +77,27 @@ program.version('1.0.0')
   .description('Install a core')
   .alias('i')
   .action(function(core) {
-      console.log(core)
+      var coreinfo = (core,cores.getCore(core))
+      if (!coreinfo) {
+        console.log(colors.red("Core '"+core+"' not found!"))
+        return;
+      }
+      coreinfo = coreinfo[0];
+      console.log(coreinfo)
+      var corepath= confpath+"src/";
+      if (fs.existsSync(corepath+coreinfo.name)) rimraf(corepath+coreinfo.name);
+      if (!fs.existsSync(corepath)) fs.mkdirSync(corepath);
+      var componentspath= cwd+"/cores/";
+      if (!fs.existsSync(componentspath)) fs.mkdirSync(componentspath);
+      var componentpath= componentspath+"/"+coreinfo.name+"/";
+      if (!fs.existsSync(componentpath)) fs.mkdirSync(componentpath);
+      const simpleGit = require('simple-git')(corepath);
+      simpleGit.clone(coreinfo.url, function(){
+        console.log(corepath+coreinfo.dir,componentpath)
+        copyFolderRecursiveSync(corepath+coreinfo.name+coreinfo.dir+"/",componentpath)
+  
+      });
+
   })
 
   program.command('remove <core>')

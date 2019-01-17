@@ -40,7 +40,14 @@ var getList = function() {
     return JSON.parse(fs.readFileSync(cores))
 }
 
+var getCore = function(core) {
+    var c = JSON.parse(fs.readFileSync(cores));
+    //console.log(c)
+    return c.filter((f)=>(f.name===core))
+}
+
 module.exports = {
     forceUpdate:() => getCoresFromGithub().then((body) => fs.writeFileSync(cores,JSON.stringify(body))),
-    getList:getList
+    getList:getList,
+    getCore:getCore
 }
