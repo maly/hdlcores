@@ -24,7 +24,7 @@ var getCoresFromGithub = function(cb) {
             if (error) reject(error)
             else {
                 console.log(colors.green("Cores list updated from master"))
-                console.log(JSON.stringify(body))
+                //console.log(JSON.stringify(body))
                 resolve(body);
             }
 		    //cb(out)

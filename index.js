@@ -89,7 +89,7 @@ program.version('1.0.0')
       }
       coreinfo = coreinfo[0];
       if (!coreinfo.dir) coreinfo.dir="/"
-      console.log(coreinfo)
+      //console.log(coreinfo)
       var gitname = path.basename(url.parse(coreinfo.url).path);
       var corepath= confpath+"src/";
       if (fs.existsSync(corepath+gitname)) rimraf(corepath+gitname);
@@ -104,6 +104,7 @@ program.version('1.0.0')
       simpleGit.clone(coreinfo.url, function(){
         
         copyFolderRecursiveSync(corepath+gitname+coreinfo.dir+"/",componentpath)
+        console.log(colors.green("Core installed."))
   
       });
 
