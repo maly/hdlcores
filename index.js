@@ -130,7 +130,7 @@ program.version('1.0.0')
   .action(function() {
       //console.log(cmd, core)
       console.log(colors.green("Available cores:"))
-      console.log(colors.yellow(cores.getList().map((f)=>f.name).join("\n")))
+      console.log(colors.yellow(cores.getList().map((f)=>f.name).sort().join("\n")))
   })
 
 //  .command('u <core>','Uninstall a core')
