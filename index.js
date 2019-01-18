@@ -9,6 +9,7 @@ const colors = require("colors/safe")
 //console.log(cores.getList())
 const fs = require("fs");
 const path = require("path");
+const url = require("url")
 
 
 var program = require('commander');
@@ -42,11 +43,13 @@ function copyFileSync( source, target ) {
   fs.writeFileSync(targetFile, fs.readFileSync(source));
 }
 
-function copyFolderRecursiveSync( source, target ) {
+function copyFolderRecursiveSync( source, target, nested ) {
   var files = [];
-
+ //console.log("CP",source,target)
   //check if folder needs to be created or integrated
-  var targetFolder = path.join( target, path.basename( source ) );
+  //console.log("PP", target, path.basename( source ) )
+  var targetFolder = target; //path.join( target, path.basename( source ) );
+  if (nested) targetFolder = path.join( target, path.basename( source ) );
   if ( !fs.existsSync( targetFolder ) ) {
       fs.mkdirSync( targetFolder );
   }
@@ -57,9 +60,11 @@ function copyFolderRecursiveSync( source, target ) {
       files = fs.readdirSync( source );
       files.forEach( function ( file ) {
           var curSource = path.join( source, file );
+          //console.log("S",curSource, targetFolder)
           if ( fs.lstatSync( curSource ).isDirectory() ) {
-              copyFolderRecursiveSync( curSource, targetFolder );
+              copyFolderRecursiveSync( curSource, targetFolder, true );
           } else {
+            
               copyFileSync( curSource, targetFolder );
           }
       } );
@@ -83,18 +88,22 @@ program.version('1.0.0')
         return;
       }
       coreinfo = coreinfo[0];
+      if (!coreinfo.dir) coreinfo.dir="/"
       console.log(coreinfo)
+      var gitname = path.basename(url.parse(coreinfo.url).path);
       var corepath= confpath+"src/";
-      if (fs.existsSync(corepath+coreinfo.name)) rimraf(corepath+coreinfo.name);
+      if (fs.existsSync(corepath+gitname)) rimraf(corepath+gitname);
       if (!fs.existsSync(corepath)) fs.mkdirSync(corepath);
       var componentspath= cwd+"/cores/";
       if (!fs.existsSync(componentspath)) fs.mkdirSync(componentspath);
-      var componentpath= componentspath+"/"+coreinfo.name+"/";
+      var componentpath= componentspath+""+coreinfo.name+"/";
       if (!fs.existsSync(componentpath)) fs.mkdirSync(componentpath);
       const simpleGit = require('simple-git')(corepath);
+
+      
       simpleGit.clone(coreinfo.url, function(){
-        console.log(corepath+coreinfo.dir,componentpath)
-        copyFolderRecursiveSync(corepath+coreinfo.name+coreinfo.dir+"/",componentpath)
+        
+        copyFolderRecursiveSync(corepath+gitname+coreinfo.dir+"/",componentpath)
   
       });
 

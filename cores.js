@@ -12,6 +12,10 @@ var getCoresFromGithub = function(cb) {
         var options = { method: 'GET',
 		    url: 'https://raw.githubusercontent.com/maly/cores/master/cores.json',
 		    headers: { 
+                "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0",
+                "Surrogate-Control": "no-store"
                 },
 		    json: true 
         }
@@ -20,7 +24,7 @@ var getCoresFromGithub = function(cb) {
             if (error) reject(error)
             else {
                 console.log(colors.green("Cores list updated from master"))
-                //console.log(JSON.stringify(body))
+                console.log(JSON.stringify(body))
                 resolve(body);
             }
 		    //cb(out)
