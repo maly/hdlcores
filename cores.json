@@ -1,5 +1,8 @@
 [
     {"name":"cpu6502_true_cycle","url":"https://github.com/freecores/cpu6502_true_cycle","dir":"/rtl/vhdl"},
+    {"name":"cpu65c02_true_cycle","url":"https://github.com/freecores/cpu65c02_true_cycle","dir":"/rtl/vhdl"},
     {"name":"t65","url":"https://github.com/freecores/t65","dir":"/rtl/vhdl"},
+    {"name":"t80","url":"https://github.com/freecores/t80","dir":"/rtl/vhdl"},
+    {"name":"acia6850","url":"https://github.com/maly/FPGA_cores","dir":"/acia6850"},
     {"name":"cpu6809","url":"https://github.com/freecores/6809_6309_compatible_core","dir":"/rtl/verilog"}
 ]
