@@ -1,6 +1,6 @@
 {
   "name": "hdlcores",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "FPGA Cores manager",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "bin": {
     "cores": "./index.js"
-  },  
+  },
   "author": "Martin Maly <maly@maly.cz> (http://www.asm80.com)",
   "engines": {
     "node": ">=5.10",
