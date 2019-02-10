@@ -41,6 +41,10 @@ if (!fs.existsSync(cores)) {
 }
 
 var getList = function() {
+    if (!fs.existsSync(cores)) {
+        console.log(colors.red("No list. Perform `cores u` first."))
+    return[];
+    }
     return JSON.parse(fs.readFileSync(cores))
 }
 
