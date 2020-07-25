@@ -1,6 +1,6 @@
 {
   "name": "hdlcores",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "FPGA Cores manager",
   "main": "index.js",
   "scripts": {
