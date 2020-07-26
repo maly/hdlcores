@@ -1,20 +1,87 @@
 [
-    {"name":"cpu6502_true_cycle","url":"https://github.com/freecores/cpu6502_true_cycle","dir":"/rtl/vhdl"},
-    {"name":"cpu65c02_true_cycle","url":"https://github.com/freecores/cpu65c02_true_cycle","dir":"/rtl/vhdl"},
-    {"name":"t65","url":"https://github.com/freecores/t65","dir":"/rtl/vhdl"},
-    {"name":"t80","url":"https://github.com/freecores/t80","dir":"/rtl/vhdl"},
-    {"name":"acia6850","url":"https://github.com/maly/FPGA_cores","dir":"/acia6850"},
-    {"name":"mc6809","url":"https://github.com/maly/FPGA_cores","dir":"/mc6809"},
-    {"name":"mc6845","url":"https://github.com/maly/FPGA_cores","dir":"/mc6845"},
-    {"name":"pia_timer","url":"https://github.com/maly/FPGA_cores","dir":"/pia_timer"},
-    {"name":"pia6821","url":"https://github.com/maly/FPGA_cores","dir":"/pia6821"},
-    {"name":"ps2_keyboard","url":"https://github.com/maly/FPGA_cores","dir":"/ps2_keyboard"},
-    {"name":"saa1099","url":"https://github.com/maly/FPGA_cores","dir":"/saa1099"},
-    {"name":"sid","url":"https://github.com/maly/FPGA_cores","dir":"/sid"},
-    {"name":"sn76489","url":"https://github.com/maly/FPGA_cores","dir":"/sn76489"},
-    {"name":"spi","url":"https://github.com/maly/FPGA_cores","dir":"/spi"},
-    {"name":"spi_gnu","url":"https://github.com/maly/FPGA_cores","dir":"/spi_gnu"},
-    {"name":"via6522","url":"https://github.com/maly/FPGA_cores","dir":"/via6522"},
-    {"name":"ym2149","url":"https://github.com/maly/FPGA_cores","dir":"/ym2149"},
-    {"name":"cpu6809","url":"https://github.com/freecores/6809_6309_compatible_core","dir":"/rtl/verilog"}
+  {
+    "name": "cpu6502_true_cycle",
+    "url": "https://github.com/freecores/cpu6502_true_cycle",
+    "dir": "/rtl/vhdl",
+    "title": "Cycle perfect CPU 6502",
+    "license": "GPLv3",
+    "description": ""
+  },
+  {
+    "name": "cpu65c02_true_cycle",
+    "url": "https://github.com/freecores/cpu65c02_true_cycle",
+    "dir": "/rtl/vhdl"
+  },
+  {
+    "name": "t65",
+    "url": "https://github.com/freecores/t65",
+    "dir": "/rtl/vhdl"
+  },
+  {
+    "name": "t80",
+    "url": "https://github.com/freecores/t80",
+    "dir": "/rtl/vhdl"
+  },
+  {
+    "name": "acia6850",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/acia6850"
+  },
+  {
+    "name": "mc6809",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/mc6809"
+  },
+  {
+    "name": "mc6845",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/mc6845"
+  },
+  {
+    "name": "pia_timer",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/pia_timer"
+  },
+  {
+    "name": "pia6821",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/pia6821"
+  },
+  {
+    "name": "ps2_keyboard",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/ps2_keyboard"
+  },
+  {
+    "name": "saa1099",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/saa1099"
+  },
+  { "name": "sid", "url": "https://github.com/maly/FPGA_cores", "dir": "/sid" },
+  {
+    "name": "sn76489",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/sn76489"
+  },
+  { "name": "spi", "url": "https://github.com/maly/FPGA_cores", "dir": "/spi" },
+  {
+    "name": "spi_gnu",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/spi_gnu"
+  },
+  {
+    "name": "via6522",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/via6522"
+  },
+  {
+    "name": "ym2149",
+    "url": "https://github.com/maly/FPGA_cores",
+    "dir": "/ym2149"
+  },
+  {
+    "name": "cpu6809",
+    "url": "https://github.com/freecores/6809_6309_compatible_core",
+    "dir": "/rtl/verilog"
+  }
 ]
