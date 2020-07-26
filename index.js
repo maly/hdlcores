@@ -73,7 +73,7 @@ program
   .version(pjson.version)
   .usage("cores command [options]")
   .on("--help", () => {
-    console.log("See https://maly.github.io/asm80-node/ for further docs");
+    console.log("\nSee https://github.com/maly/hdlcores/ for further docs");
   });
 
 program
