@@ -108,6 +108,15 @@
   {
     "name": "cpu6809",
     "url": "https://github.com/freecores/6809_6309_compatible_core",
-    "dir": "/rtl/verilog"
+    "dir": "/rtl/verilog",
+    "lang": "Verilog"
+  },
+  {
+    "name": "m6809",
+    "url": "https://github.com/nealcrook/multicomp6809",
+    "dir": "/multicomp/Components/M6809p",
+    "title": "Synthesizable 6809 instruction compatible VHDL CPU core",
+    "license": "GPLv3",
+    "description": "6809 instruction compatible CPU core written in VHDL \nwith Last Instruction Cycle, bus available, bus status,\nand instruction fetch signals."
   }
 ]
