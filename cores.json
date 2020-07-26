@@ -10,18 +10,44 @@
   {
     "name": "cpu65c02_true_cycle",
     "url": "https://github.com/freecores/cpu65c02_true_cycle",
-    "dir": "/rtl/vhdl"
+    "dir": "/rtl/vhdl",
+    "title": "Cycle perfect CPU 65C02",
+    "license": "GPLv3",
+    "description": ""
   },
   {
     "name": "t65",
     "url": "https://github.com/freecores/t65",
-    "dir": "/rtl/vhdl"
+    "dir": "/rtl/vhdl",
+    "title": "65xx compatible microprocessor core (original)",
+    "license": "MIT",
+    "description": ""
+  },
+  {
+    "name": "t65b",
+    "url": "https://github.com/mist-devel/T65/",
+    "dir": "/rtl/vhdl",
+    "title": "65xx compatible microprocessor core T65 (maintained)",
+    "license": "MIT",
+    "description": ""
+  },
+  {
+    "name": "t80_fc",
+    "url": "https://github.com/freecores/t80",
+    "dir": "/rtl/vhdl",
+    "title": "Z80 / 8080 / GameBoy CPU core (original)",
+    "license": "MIT",
+    "description": "Configurable cpu core that supports Z80, 8080 and gameboy instruction sets. Z80 and 8080 compability have been proven by numerous implementations of old computer and arcade systems. It is used in the zxgate project, a zx81, zx spectrum, trs80 and Jupiter ACE clone project. And also in the FPGA Arcade project. A Z80 SoC debug system with ROM, RAM and two 16450 UARTs is included in the distribution. It is possible to run the NoICE debugger on this system. Batch files for runnning XST and Leonardo synthesis can be found in syn/xilinx/run/. Check these scripts to see how to use the included VHDL ROM generators. Before you can run the scripts you need to compile hex2rom and xrom or download binaries from here. You must also replace one of the hex files in sw/ or change the batch files to use another hex file. The z88dk C compiler can be used with T80. The \"embedded\" configuration can be used with the debug system without modifications"
   },
   {
     "name": "t80",
-    "url": "https://github.com/freecores/t80",
-    "dir": "/rtl/vhdl"
+    "url": "https://github.com/EisernSchild/t80",
+    "dir": "/rtl/vhdl",
+    "title": "Z80 / 8080 / GameBoy CPU core (maintained)",
+    "license": "MIT",
+    "description": "Configurable cpu core that supports Z80, 8080 and gameboy instruction sets. Z80 and 8080 compability have been proven by numerous implementations of old computer and arcade systems. It is used in the zxgate project, a zx81, zx spectrum, trs80 and Jupiter ACE clone project. And also in the FPGA Arcade project. A Z80 SoC debug system with ROM, RAM and two 16450 UARTs is included in the distribution. It is possible to run the NoICE debugger on this system. Batch files for runnning XST and Leonardo synthesis can be found in syn/xilinx/run/. Check these scripts to see how to use the included VHDL ROM generators. Before you can run the scripts you need to compile hex2rom and xrom or download binaries from here. You must also replace one of the hex files in sw/ or change the batch files to use another hex file. The z88dk C compiler can be used with T80. The \"embedded\" configuration can be used with the debug system without modifications"
   },
+
   {
     "name": "acia6850",
     "url": "https://github.com/maly/FPGA_cores",
