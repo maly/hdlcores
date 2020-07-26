@@ -99,7 +99,7 @@ program
     if (!fs.existsSync(componentpath)) fs.mkdirSync(componentpath);
     const simpleGit = require("simple-git")(corepath);
 
-    simpleGit.clone(coreinfo.url, function () {
+    simpleGit.clone(coreinfo.url, () => {
       copyFolderRecursiveSync(
         corepath + gitname + coreinfo.dir + "/",
         componentpath
@@ -112,7 +112,7 @@ program
   .command("remove <core>")
   .description("Uninstall a core")
   .alias("rm")
-  .action(function (core) {
+  .action((core) => {
     console.log(core);
   });
 
@@ -120,22 +120,57 @@ program
   .command("update")
   .alias("u")
   .description("Update a core list")
-  .action(function () {
+  .action(() => {
     //console.log(cmd, core)
     cores.forceUpdate();
   });
 program
-  .command("list")
+  .command("list [core]")
   .alias("l")
   .description("List of available cores")
-  .action(function () {
-    //console.log(cmd, core)
+  .action((core) => {
+    if (core) {
+      // perform core details
+      let c = cores.getList().filter((f) => f.name == core);
+      if (c && c.length == 1) {
+        c = c[0];
+        //console.log(c);
+        console.log(
+          colors.yellow(c.name),
+          colors.green(c.title ? c.title : "(No description)")
+        );
+        if (c.description) console.log("Description:\t" + c.description);
+        console.log("------------------------------------");
+        if (c.license) console.log("License:\t" + c.license);
+        console.log("Language:\t" + (c.lang ? c.lang : "VHDL"));
+        console.log(colors.blue("URL:       \t" + c.url));
+        return;
+      }
+      console.log(colors.red("No such core."));
+    }
     console.log(colors.green("Available cores:"));
     console.log(
       colors.yellow(
         cores
           .getList()
           .map((f) => f.name)
+          .sort()
+          .join(", ")
+      )
+    );
+  });
+
+program
+  .command("longlist")
+  .alias("ll")
+  .description("Verbose of available cores")
+  .action(() => {
+    console.log(colors.green("Available cores:"));
+    console.log(
+      colors.yellow(
+        cores
+          .getList()
+          .map((f) => f.name + (f.title ? colors.white(" - " + f.title) : ""))
           .sort()
           .join("\n")
       )
