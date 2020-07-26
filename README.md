@@ -22,8 +22,21 @@ See [cores.json](cores.json) to check the list.
 
 `hdlcores l` 
 
+### Verbose list available cores
+
+`hdlcores ll` 
+
+### Core detail
+
+`hdlcores l [core-name]` 
+
+
 ### Install a core
 
 `hdlcores i [core-name]`, where _core-name_ is the name from the list (see above)
 
 The code is downloaded and copied to the working directory (i.e. the directory where you invoke the commnad).
+
+## Want to add a core?
+
+Feel free to edit [cores.json](cores.json) and send me a pull request!
