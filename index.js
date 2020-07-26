@@ -90,7 +90,7 @@ program
     }
     coreinfo = coreinfo[0];
     if (!coreinfo.dir) coreinfo.dir = "/";
-    if (cmd.verbose) console.log(color.cyan("Prepare cache"));
+    if (cmd.verbose) console.log(colors.cyan("Prepare cache"));
     var gitname = path.basename(url.parse(coreinfo.url).path);
     var corepath = confpath + "src/";
     if (fs.existsSync(corepath + gitname)) rimraf(corepath + gitname);
@@ -100,10 +100,10 @@ program
     var componentpath = componentspath + "" + coreinfo.name + "/";
     if (!fs.existsSync(componentpath)) fs.mkdirSync(componentpath);
     const simpleGit = require("simple-git")(corepath);
-    if (cmd.verbose) console.log(color.cyan("Cloning Git repository"));
+    if (cmd.verbose) console.log(colors.cyan("Cloning Git repository"));
 
     simpleGit.clone(coreinfo.url, () => {
-      if (cmd.verbose) console.log(color.cyan("Copying files"));
+      if (cmd.verbose) console.log(colors.cyan("Copying files"));
       copyFolderRecursiveSync(
         corepath + gitname + coreinfo.dir + "/",
         componentpath
