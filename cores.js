@@ -1,12 +1,11 @@
 const confpath = require("./config.js");
 const fs = require("fs");
-//var request = require("request");
 const got = require("got");
 const colors = require("colors/safe");
 
 const cores = confpath + "cores.json";
 
-var getCoresFromGithub = function (cb) {
+const getCoresFromGithub = () => {
   return new Promise(function (resolve, reject) {
     // Do async job
     var options = {
@@ -19,14 +18,11 @@ var getCoresFromGithub = function (cb) {
         Expires: "0",
         "Surrogate-Control": "no-store",
       },
-      //json: true,
     };
 
     (async () => {
       try {
         const response = await got(options);
-        //console.log("statusCode:", response.statusCode);
-        //console.log("body:", response.body);
         console.log(colors.green("Cores list was updated from master"));
         resolve(JSON.parse(response.body));
       } catch (error) {
@@ -34,17 +30,6 @@ var getCoresFromGithub = function (cb) {
         reject(error);
       }
     })();
-    /*
-    request(options, function (error, response, body) {
-      if (error) reject(error);
-      else {
-        console.log(colors.green("Cores list updated from master"));
-        //console.log(JSON.stringify(body))
-        resolve(body);
-      }
-      //cb(out)
-    });
-      */
   });
 };
 
@@ -54,7 +39,7 @@ if (!fs.existsSync(cores)) {
   );
 }
 
-var getList = function () {
+const getList = () => {
   if (!fs.existsSync(cores)) {
     console.log(colors.red("No list. Perform `cores u` first."));
     return [];
@@ -62,9 +47,8 @@ var getList = function () {
   return JSON.parse(fs.readFileSync(cores));
 };
 
-var getCore = function (core) {
+const getCore = (core) => {
   var c = JSON.parse(fs.readFileSync(cores));
-  //console.log(c)
   return c.filter((f) => f.name === core);
 };
 
