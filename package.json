@@ -24,6 +24,6 @@
     "colors": "^1.4.0",
     "commander": "^2.20.3",
     "got": "^11.5.1",
-    "simple-git": "^1.132.0"
+    "simple-git": "^3.5.0"
   }
 }
